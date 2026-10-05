@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "secure_bucket" {
-    source = "./modules/secure_bucket.tf"
+    source = "./modules/secure_bucket"
     bucket_name = "test_bucket_by_ateeq"
 }
