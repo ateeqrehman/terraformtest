@@ -9,7 +9,7 @@ resource "aws_instance"  "app_server" {
     associate_public_ip_address = false
     
     tags  = {
-        Name = "testingbyAteeq1"
+        Name = "testingbyAteeq2"
     }
 
 }
