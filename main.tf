@@ -2,14 +2,31 @@ provider "aws" {
     region = "us-east-1"
 }
 
-resource "aws_instance"  "app_server" {
-    ami = "ami-0d27e0fb3bac4d724"
-    instance_type = "t2.micro"
-    subnet_id = "subnet-0e1271861be9bcf14"
-    associate_public_ip_address = false
-    
-    tags  = {
-        Name = "testingbyAtee9"
+resource "aws_s3_bucket" "test" {
+    bucket = "ateeq-terraformtest-secure-bucket-unique-suffix"
+}
+
+resource "aws_s3_bucket_policy" "enforce_ssl" {
+ bucket = aws_s3_bucket.test.id
+ policy = jsonencode(
+    {
+        Version = "2012-10-17"
+        Statement = [
+            sid = "DenyInsecure" 
+            Effect = "Deny"
+            Principal = "*"
+            Action = "s3:*"
+            Resource = {
+                aws_s3_bucket.test.arn,
+                "${aws_s3_bucket.secure.arn}/*"
+            }
+            Condition = {
+                Bool = {
+                    "aws:SecureTransport" = "false"
+                }
+            }
+        ]
     }
+ )
 
 }
