@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance"  "app_server" {
-    ami = "ami-05b5ed9c0b125b39c"
+    ami = "ami-0d27e0fb3bac4d724"
     instance_type = "t2.micro"
     subnet_id = "subnet-0e1271861be9bcf14"
     associate_public_ip_address = false
