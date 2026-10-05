@@ -19,7 +19,7 @@ resource "aws_s3_bucket_policy" "enforce_ssl" {
             Action = "s3:*"
             Resource = [
                 aws_s3_bucket.test.arn,
-                "${aws_s3_bucket.secure.arn}/*"
+                "${aws_s3_bucket.test.arn}/*"
             ]
             Condition = {
                 Bool = {
