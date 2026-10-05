@@ -13,7 +13,7 @@ resource "aws_s3_bucket_policy" "enforce_ssl" {
         Version = "2012-10-17"
         Statement = [
             {
-            sid = "DenyInsecure" 
+            Sid = "DenyInsecure" 
             Effect = "Deny"
             Principal = "*"
             Action = "s3:*"
