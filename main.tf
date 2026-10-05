@@ -17,10 +17,10 @@ resource "aws_s3_bucket_policy" "enforce_ssl" {
             Effect = "Deny"
             Principal = "*"
             Action = "s3:*"
-            Resource = {
+            Resource = [
                 aws_s3_bucket.test.arn,
                 "${aws_s3_bucket.secure.arn}/*"
-            }
+            ]
             Condition = {
                 Bool = {
                     "aws:SecureTransport" = "false"
