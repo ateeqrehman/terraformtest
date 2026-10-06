@@ -4,5 +4,5 @@ provider "aws" {
 
 module "secure_bucket" {
     source = "./modules/secure_bucket"
-    bucket_name = "test_bucket_by_ateeq"
+    bucket_name = "test-bucket-by-ateeq-20261004"
 }
